@@ -4,7 +4,7 @@ $:.shift
 
 %w[mail].each {|r| require r}
 
-@appl.post.taskmgr.get_pkg_for_sending(3).each do |t|
+@appl.post.taskmgr.get_pkg_for_sending(2).each do |t|
 	task_item_id = t['_id']
 	template = t['attr'] ? t['attr']['template'] : nil
 	data = t['data']
