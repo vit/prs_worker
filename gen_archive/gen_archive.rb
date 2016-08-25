@@ -60,11 +60,27 @@ end
 			write_files_to_archive lst, zipfile_name
 			FileUtils.mkdir_p dst_dir
 			FileUtils.mv(zipfile_name, dst_dir)
-			zipfile_name = dir+'/'+'papers_'+cont_id.to_s+Time.new.strftime("_%Y_%m_%d_%H_%M_%S")+'.zip'
-			#write_files_to_archive lst, zipfile_name
-			write_files_to_archive lst, zipfile_name, ['abstract', 'paper', 'presentation']
+
+			#zipfile_name = dir+'/'+'papers_'+cont_id.to_s+Time.new.strftime("_%Y_%m_%d_%H_%M_%S")+'.zip'
+			#write_files_to_archive lst, zipfile_name, ['abstract', 'paper', 'presentation']
+			#FileUtils.mkdir_p dst_dir
+			#FileUtils.mv(zipfile_name, dst_dir)
+
+			zipfile_name = dir+'/'+'abstracts_'+cont_id.to_s+Time.new.strftime("_%Y_%m_%d_%H_%M_%S")+'.zip'
+			write_files_to_archive lst, zipfile_name, ['abstract']
 			FileUtils.mkdir_p dst_dir
 			FileUtils.mv(zipfile_name, dst_dir)
+
+			zipfile_name = dir+'/'+'papers_'+cont_id.to_s+Time.new.strftime("_%Y_%m_%d_%H_%M_%S")+'.zip'
+			write_files_to_archive lst, zipfile_name, ['paper']
+			FileUtils.mkdir_p dst_dir
+			FileUtils.mv(zipfile_name, dst_dir)
+
+			zipfile_name = dir+'/'+'presentations_'+cont_id.to_s+Time.new.strftime("_%Y_%m_%d_%H_%M_%S")+'.zip'
+			write_files_to_archive lst, zipfile_name, ['presentation']
+			FileUtils.mkdir_p dst_dir
+			FileUtils.mv(zipfile_name, dst_dir)
+
 		end
 
 	end
