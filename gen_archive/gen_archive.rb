@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 $:.unshift __dir__+'/../common/'
 require "load_model"
 $:.shift
@@ -18,6 +20,8 @@ def write_files_to_archive lst, zipfile_name, types=nil, long_names: false, fold
 			title = title_en.to_s.length > 0 ? title_en.to_s : title_ru.to_s
 			title = title[0...50]
 			title_no_translit = title
+			title_no_translit.gsub!(/[^0-9A-Za-z.\-абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ]/, '_')
+			#title_no_translit.gsub!(/[\n\r\/\\]/, '_')
 			title = Russian.translit(title)
 			title.gsub!(/[^0-9A-Za-z.\-]/, '_')
 			dir_name = ("%04d_" % cnt) + title
